@@ -1,5 +1,6 @@
 package com.example.pd_p4_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toggle_menu, menu);
+        getMenuInflater().inflate(R.menu.toggle_menu_main, menu);
         return true;
     }
 
@@ -39,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
-            case R.id.action_toggle:
-                return true;
+            case R.id.action_toggle_main:
+                Intent intent = new Intent(this, ListActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
