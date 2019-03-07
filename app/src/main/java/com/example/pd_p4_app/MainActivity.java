@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Button addPlant = findViewById(R.id.buttonAddPlant);
         addPlant.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(this, AddPlantActivity.class);
+                startActivity(intent);
             }
         });
     }

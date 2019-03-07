@@ -6,4 +6,7 @@
     <string name="buttonAddPlantText">Add</string>
     <string name="buttonEditPlantsText">Edit</string>
     <string name="buttonDeletePlantsText">Delete</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
