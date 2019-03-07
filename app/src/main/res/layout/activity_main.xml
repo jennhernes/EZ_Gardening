@@ -32,7 +32,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/bigButton"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_marginStart="8dp"
@@ -56,25 +56,25 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button1a"
+                android:id="@+id/buttonAddPlant"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext"
+                android:text="@string/buttonAddPlantText"
                 tools:ignore="ButtonStyle" />
             <Button
-                android:id="@+id/button2a"
+                android:id="@+id/buttonEditPlants"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext"
+                android:text="@string/buttonEditPlantsText"
                 tools:ignore="ButtonStyle" />
             <Button
-                android:id="@+id/button3a"
+                android:id="@+id/buttonDeletePlants"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext"
+                android:text="@string/buttonDeletePlantsText"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>

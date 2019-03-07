@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -20,6 +21,24 @@
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/headerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Name" />
+            <TextView
+                android:id="@+id/headerCurrentHumidity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Humidity" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/plant_list"
@@ -34,23 +53,26 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button1"
+                android:id="@id/buttonAddPlant"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext" />
+                android:text="@string/buttonAddPlantText"
+                tools:ignore="ButtonStyle" />
             <Button
-                android:id="@+id/button2"
+                android:id="@id/buttonEditPlants"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext" />
+                android:text="@string/buttonEditPlantsText"
+                tools:ignore="ButtonStyle" />
             <Button
-                android:id="@+id/button3"
+                android:id="@id/buttonDeletePlants"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/btntext" />
+                android:text="@string/buttonDeletePlantsText"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 

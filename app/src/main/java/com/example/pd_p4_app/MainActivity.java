@@ -9,12 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private Button bigButton;
+    private Plant dangerPlant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        ((MyApplication)this.getApplication()).setPlant("Clara", 50, 62);
+        dangerPlant = ((MyApplication)this.getApplication()).getPlant();
+        bigButton = findViewById(R.id.bigButton);
+        bigButton.setText(dangerPlant.getName() + " is in danger!\nHumidity level at\n\n" + dangerPlant.getCurrentHumidity());
     }
 
     @Override
