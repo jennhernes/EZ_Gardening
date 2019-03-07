@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,10 +30,15 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        ((MyApplication)this.getApplication()).setPlant("Clara", 50, 62);
-        dangerPlant = ((MyApplication)this.getApplication()).getPlant();
+        dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
         bigButton = findViewById(R.id.bigButton);
         bigButton.setText(dangerPlant.getName() + " is in danger!\nHumidity level at\n\n" + dangerPlant.getCurrentHumidity());
+
+        Button addPlant = findViewById(R.id.buttonAddPlant);
+        addPlant.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override

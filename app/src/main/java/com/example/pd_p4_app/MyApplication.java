@@ -2,15 +2,29 @@ package com.example.pd_p4_app;
 
 import android.app.Application;
 
-public class MyApplication extends Application {
-    private Plant plant;
+import java.util.ArrayList;
 
-    public Plant getPlant() {
-        return plant;
+public class MyApplication extends Application {
+
+    ArrayList<Plant> plants = new ArrayList<>();
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setPlant("Benjamin", 52, 70);
+        setPlant("Clara", 50, 62);
+    }
+
+    public ArrayList<Plant> getPlants() {
+        return plants;
+    }
+
+    public Plant getPlantAt(int position) {
+        return plants.get(position);
     }
 
     public void setPlant(String name, int threshold, int currentHumidity) {
-        plant = new Plant(name, threshold, currentHumidity);
+        plants.add(new Plant(name, threshold, currentHumidity));
     }
 }
 

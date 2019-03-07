@@ -35,11 +35,7 @@ public class ListActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        Plant testPlant = ((MyApplication)this.getApplication()).getPlant();
-
-        ArrayList<Plant> plants = new ArrayList<>();
-        plants.add(testPlant);
-        PlantsAdapter adapter = new PlantsAdapter(this, plants);
+        PlantsAdapter adapter = new PlantsAdapter(this, ((MyApplication)this.getApplication()).getPlants());
         ListView listView = findViewById(R.id.plant_list);
         listView.setAdapter(adapter);
 
