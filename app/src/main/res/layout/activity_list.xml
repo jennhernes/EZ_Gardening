@@ -59,20 +59,6 @@
                 android:layout_weight="1"
                 android:text="@string/buttonAddPlantText"
                 tools:ignore="ButtonStyle" />
-            <Button
-                android:id="@id/buttonEditPlants"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/buttonEditPlantsText"
-                tools:ignore="ButtonStyle" />
-            <Button
-                android:id="@id/buttonDeletePlants"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/buttonDeletePlantsText"
-                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 

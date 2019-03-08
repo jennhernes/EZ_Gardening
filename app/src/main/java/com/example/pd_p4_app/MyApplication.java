@@ -11,8 +11,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        setPlant("Benjamin", 52, 70);
-        setPlant("Clara", 50, 62);
+        addPlant("Benjamin", 52, 70);
+        addPlant("Clara", 50, 62);
     }
 
     public ArrayList<Plant> getPlants() {
@@ -23,7 +23,7 @@ public class MyApplication extends Application {
         return plants.get(position);
     }
 
-    public void setPlant(String name, int threshold, int currentHumidity) {
+    public void addPlant(String name, int threshold, int currentHumidity) {
         plants.add(new Plant(name, threshold, currentHumidity));
     }
 }

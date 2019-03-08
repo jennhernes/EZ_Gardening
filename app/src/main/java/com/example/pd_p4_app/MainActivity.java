@@ -32,12 +32,20 @@ public class MainActivity extends AppCompatActivity {
 
         dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
         bigButton = findViewById(R.id.bigButton);
-        bigButton.setText(dangerPlant.getName() + " is in danger!\nHumidity level at\n\n" + dangerPlant.getCurrentHumidity());
+        bigButton.setText("\n" + dangerPlant.getName() + " is in danger!\nHumidity level at\n\n" + dangerPlant.getCurrentHumidity());
 
         Button addPlant = findViewById(R.id.buttonAddPlant);
         addPlant.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(this, AddPlantActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddPlantActivity.class);
+                startActivityForResult(intent, RESULT_OK);
+            }
+        });
+
+        Button buttonChangeView = findViewById(R.id.bigButton);
+        buttonChangeView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });

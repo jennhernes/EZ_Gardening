@@ -40,7 +40,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/btn_background"
-                android:text="Bruce is in danger.\nHumidity level at\n\n65%"
+                android:text="\nBruce is in danger.\nHumidity level at\n\n65%"
                 android:textAllCaps="false"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -61,20 +61,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/buttonAddPlantText"
-                tools:ignore="ButtonStyle" />
-            <Button
-                android:id="@+id/buttonEditPlants"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/buttonEditPlantsText"
-                tools:ignore="ButtonStyle" />
-            <Button
-                android:id="@+id/buttonDeletePlants"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/buttonDeletePlantsText"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
