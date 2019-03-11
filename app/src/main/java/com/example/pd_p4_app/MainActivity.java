@@ -1,6 +1,8 @@
 package com.example.pd_p4_app;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,9 +34,26 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
         bigButton = findViewById(R.id.bigButton);
-        bigButton.setText("\n" + dangerPlant.getName() + " is in danger!\nHumidity level at\n\n" + dangerPlant.getCurrentHumidity());
+
+        if (((MyApplication)getApplication()).plants.size() == 0) {
+            bigButton.setText("\nThere are no plants logged in the app. Add a plant using the button below.");
+        } else {
+            Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
+            dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
+            if (dangerPlant.getCurrentHumidity() - dangerPlant.getThreshold() < 0) {
+                bigButton.setText("\n" + dangerPlant.getName() + " needs water immediately!\n\n" +
+                        "Humidity level at\n" + dangerPlant.getCurrentHumidity());
+                bigButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            } else if (dangerPlant.getCurrentHumidity() - dangerPlant.getThreshold() < 10) {
+                bigButton.setText(dangerPlant.getName() + "\nis getting dry.\n\n" +
+                        "Humidity level at\n" + dangerPlant.getCurrentHumidity());
+                bigButton.getBackground().setColorFilter(0xffd435, PorterDuff.Mode.SRC_ATOP);
+            } else {
+                bigButton.setText("All plants are watered");
+                bigButton.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+            }
+        }
 
         Button addPlant = findViewById(R.id.buttonAddPlant);
         addPlant.setOnClickListener(new View.OnClickListener() {

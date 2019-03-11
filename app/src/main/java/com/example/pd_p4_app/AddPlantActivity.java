@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Collections;
+
 public class AddPlantActivity extends AppCompatActivity {
 
     @Override
@@ -28,7 +30,8 @@ public class AddPlantActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String plantName = ((EditText)findViewById(R.id.editTextPlantName)).getText().toString();
                 int plantMinHumidity = Integer.parseInt(((EditText)findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
-                ((MyApplication)getApplication()).addPlant(plantName, 50, plantMinHumidity);
+                ((MyApplication)getApplication()).addPlant(plantName, plantMinHumidity, 80);
+                Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
                 Intent intent = new Intent(AddPlantActivity.this, ListActivity.class);
                 finish();
                 startActivity(intent);

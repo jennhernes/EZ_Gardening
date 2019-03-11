@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class ListActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
         final PlantsAdapter adapter = new PlantsAdapter(this, ((MyApplication)this.getApplication()).getPlants());
         ListView listView = findViewById(R.id.plant_list);
         listView.setAdapter(adapter);
@@ -52,9 +54,8 @@ public class ListActivity extends AppCompatActivity {
                 builder.setTitle("Modify plant")
                         .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                //Yes button clicked, do something
-                                Toast.makeText(ListActivity.this, "Yes button pressed",
-                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ListActivity.this, EditPlantActivity.class);
+                                intent.putExtra("pos", position);
                             }
                         })
                         .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -114,9 +115,11 @@ class PlantsAdapter extends ArrayAdapter<Plant> {
         // Lookup view for data population
         TextView plantName = convertView.findViewById(R.id.plantName);
         TextView currentHumidity = convertView.findViewById(R.id.currentHumidity);
+        TextView minHumidity = convertView.findViewById(R.id.minHumidity);
         // Populate the data into the template view using the data object
         plantName.setText(plant.getName());
         currentHumidity.setText(Integer.toString(plant.getCurrentHumidity()));
+        minHumidity.setText(Integer.toString(plant.getThreshold()));
         // Return the completed view to render on screen
         return convertView;
     }

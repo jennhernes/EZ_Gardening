@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddPlantActivity"></activity>
+        <activity android:name=".EditPlantActivity"></activity>
+        <activity android:name=".AddPlantActivity" />
         <activity android:name=".ListActivity" />
         <activity
             android:name=".MainActivity"

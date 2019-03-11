@@ -3,6 +3,7 @@ package com.example.pd_p4_app;
 import android.app.Application;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MyApplication extends Application {
 
@@ -50,4 +51,19 @@ class Plant {
     public int getCurrentHumidity() {
         return this.currentHumidity;
     }
+
+    public static Comparator<Plant> HumdityDiffComparator = new Comparator<Plant>() {
+
+        public int compare(Plant p1, Plant p2) {
+            int diff1 = p1.currentHumidity - p1.threshold;
+            int diff2 = p2.currentHumidity - p2.threshold;
+
+            if (diff1 < diff2) {
+                return -1;
+            } else if (diff1 == diff2) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }};
 }
