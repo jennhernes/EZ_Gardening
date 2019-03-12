@@ -12,8 +12,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        addPlant("Benjamin", 52, 70);
-        addPlant("Clara", 50, 62);
+        addPlant("Benjamin", 52, 50);
+        addPlant("Clara", 50, 55);
+        addPlant("David", 65, 78);
     }
 
     public ArrayList<Plant> getPlants() {
@@ -31,12 +32,12 @@ public class MyApplication extends Application {
 
 class Plant {
     private String name;
-    private int threshold;
+    private int minHumidity;
     private int currentHumidity;
 
-    public Plant(String name, int threshold, int currentHumidity) {
+    public Plant(String name, int minHumidity, int currentHumidity) {
         this.name = name;
-        this.threshold = threshold;
+        this.minHumidity = minHumidity;
         this.currentHumidity = currentHumidity;
     }
 
@@ -44,8 +45,8 @@ class Plant {
         return this.name;
     }
 
-    public int getThreshold() {
-        return this.threshold;
+    public int getMinHumidity() {
+        return this.minHumidity;
     }
 
     public int getCurrentHumidity() {
@@ -55,8 +56,8 @@ class Plant {
     public static Comparator<Plant> HumdityDiffComparator = new Comparator<Plant>() {
 
         public int compare(Plant p1, Plant p2) {
-            int diff1 = p1.currentHumidity - p1.threshold;
-            int diff2 = p2.currentHumidity - p2.threshold;
+            int diff1 = p1.currentHumidity - p1.minHumidity;
+            int diff2 = p2.currentHumidity - p2.minHumidity;
 
             if (diff1 < diff2) {
                 return -1;

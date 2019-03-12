@@ -8,11 +8,12 @@
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorHomeBackgroundGrey">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
@@ -24,25 +25,32 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/headerName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
                 android:text="Name" />
             <TextView
                 android:id="@+id/headerCurrentHumidity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:text="Current Humidity" />
             <TextView
                 android:id="@+id/headerMinHumidity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:text="Minimum Humidity" />
         </LinearLayout>
 

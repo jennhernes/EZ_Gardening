@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="colorBigButtonRed">#FF4001</color>
+    <color name="colorBigButtonYellow">#FFCF52</color>
+    <color name="colorBigButtonGreen">#98D018</color>
+    <color name="colorBigButtonGrey">#888888</color>
+
+    <color name="colorHomeBackgroundRed">#FFDBD1</color>
+    <color name="colorHomeBackgroundYellow">#FFF5C2</color>
+    <color name="colorHomeBackgroundGreen">#F0FFCD</color>
+    <color name="colorHomeBackgroundGrey">#DDDDDD</color>
+
+    <color name="colorAddButtonRed">#FF7161</color>
+    <color name="colorAddButtonYellow">#F2C745</color>
+    <color name="colorAddButtonGreen">#7DD018</color>
+    <color name="colorAddButtonGrey">#AAAAAA</color>
 </resources>

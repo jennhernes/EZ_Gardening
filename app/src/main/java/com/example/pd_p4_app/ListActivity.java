@@ -3,6 +3,8 @@ package com.example.pd_p4_app;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,11 +22,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -41,6 +41,9 @@ public class ListActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        Drawable drawerToggle = myToolbar.getNavigationIcon();
+        drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
 
         Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
         final PlantsAdapter adapter = new PlantsAdapter(this, ((MyApplication)this.getApplication()).getPlants());
@@ -70,8 +73,9 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        Button addPlant = findViewById(R.id.buttonAddPlant);
-        addPlant.setOnClickListener(new View.OnClickListener() {
+        Button buttonAddPlant = findViewById(R.id.buttonAddPlant);
+        buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
+        buttonAddPlant.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(ListActivity.this, AddPlantActivity.class);
                 startActivity(intent);
@@ -119,8 +123,17 @@ class PlantsAdapter extends ArrayAdapter<Plant> {
         // Populate the data into the template view using the data object
         plantName.setText(plant.getName());
         currentHumidity.setText(Integer.toString(plant.getCurrentHumidity()));
-        minHumidity.setText(Integer.toString(plant.getThreshold()));
-        // Return the completed view to render on screen
+        minHumidity.setText(Integer.toString(plant.getMinHumidity()));
+
+        if (plant.getCurrentHumidity() - plant.getMinHumidity() < getContext().getResources().getInteger(R.integer.intRedDiff)) { // RED
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundRed));
+        } else if (plant.getCurrentHumidity() - plant.getMinHumidity() < getContext().getResources().getInteger(R.integer.intYellowDiff)) { // YELLOW
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundYellow));
+        }else { // GREEN
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundGreen));
+        }
+            // Return the completed view to render on screen
+
         return convertView;
     }
 }

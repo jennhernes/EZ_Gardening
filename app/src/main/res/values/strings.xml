@@ -3,9 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="buttonAddPlantText">Add</string>
-    <string name="buttonEditPlantsText">Edit</string>
-    <string name="buttonDeletePlantsText">Delete</string>
+    <string name="buttonAddPlantText">Add Plant</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
