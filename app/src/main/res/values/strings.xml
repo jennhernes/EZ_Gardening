@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">E-Z Gardening</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="buttonAddPlantText">Add Plant</string>
+    <string name="buttonAddPlant">Add Plant</string>
+    <string name="noPlantsAdded">\nThere are no plants logged in the app. Add a plant using the button below.</string>
+    <string name="allPlantsWatered">All plants are watered</string>
+    <string name="fieldTitleName">Name</string>
+    <string name="fieldTitleCurrentHumidity">Current Humidity</string>
+    <string name="fieldTitleMinHumidity">Minimum Humidity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Numbers used for threshold differences between changing colours in MainActivity and ListActivity -->
     <integer name="intRedDiff">0</integer>
     <integer name="intYellowDiff">10</integer>
 </resources>

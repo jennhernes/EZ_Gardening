@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for the AddPlantActivity -->
+<!-- From here the user can add a plant to the app -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <!--Plant name, field title and edit text area-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Name"/>
+            android:text="@string/fieldTitleName"/>
         <EditText
             android:id="@+id/editTextPlantName"
             android:layout_width="0dp"
@@ -20,6 +23,7 @@
             android:layout_weight="4"
             android:inputType="text"/>
     </LinearLayout>
+    <!--Plant minimum humidity, field title and edit text area-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Minimum Humidity"/>
+            android:text="@string/fieldTitleMinHumidity"/>
         <EditText
             android:id="@+id/editTextPlantMinHumidity"
             android:layout_width="0dp"
@@ -36,9 +40,10 @@
             android:layout_weight="4"
             android:inputType="text"/>
     </LinearLayout>
+    <!--Confirm add button, pressing this button adds the plant and closes the activity-->
     <Button
         android:id="@+id/buttonConfirmAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Plant"/>
+        android:text="@string/buttonAddPlant"/>
 </LinearLayout>

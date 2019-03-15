@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Use DrawerLayout as root container for activity -->
+<!-- Layout for MainActivity -->
+<!-- From here the user is shown the plant most in need of watering -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
@@ -25,14 +25,16 @@
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+        <!-- Holds the large button in the center of the screen -->
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
             android:orientation="vertical">
 
+            <!-- Button text and colour is updated programmatically -->
             <Button
-                android:id="@+id/bigButton"
+                android:id="@+id/buttonBigCircle"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_marginStart="8dp"
@@ -40,7 +42,6 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/btn_background"
-                android:text="\nBruce is in danger.\nHumidity level at\n\n65%"
                 android:textAllCaps="false"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
+        <!-- The button is in a linear layout in case of more buttons being added later -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -60,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/buttonAddPlantText"
+                android:text="@string/buttonAddPlant"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
