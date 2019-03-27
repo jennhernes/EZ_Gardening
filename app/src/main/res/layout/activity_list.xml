@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for ListActivity -->
+<!-- From here the user can view all the plants in a list format -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/drawer_layout"
@@ -6,7 +8,6 @@
     android:layout_height="match_parent"
     android:theme="@style/ListTheme"
     android:fitsSystemWindows="true">
-
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,6 +23,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAddButtonGreen"/>
 
+        <!-- Header row -->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textColor="@color/colorBlack"
-                android:text="Name" />
+                android:text="@string/fieldTitleName" />
             <TextView
                 android:id="@+id/headerCurrentHumidity"
                 android:layout_width="0dp"
@@ -45,7 +47,7 @@
                 android:textSize="17sp"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
-                android:text="Current Humidity" />
+                android:text="@string/fieldTitleCurrentHumidity" />
             <TextView
                 android:id="@+id/headerMinHumidity"
                 android:layout_width="0dp"
@@ -55,7 +57,7 @@
                 android:textSize="17sp"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
-                android:text="Minimum Humidity" />
+                android:text="@string/fieldTitleMinHumidity" />
         </LinearLayout>
 
         <ListView
@@ -66,6 +68,7 @@
             android:dividerHeight="5dp"
             android:divider="@color/colorWhite"/>
 
+        <!-- The button is in a linear layout in case of more buttons being added later -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

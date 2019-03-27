@@ -7,16 +7,19 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
 
-    <color name="colorBigButtonRed">#FF4001</color>
-    <color name="colorBigButtonYellow">#FFCF52</color>
-    <color name="colorBigButtonGreen">#98D018</color>
-    <color name="colorBigButtonGrey">#888888</color>
+    <!-- Colours used for the button in the middle of MainActivity -->
+    <color name="colorCircleButtonRed">#FF4001</color>
+    <color name="colorCircleButtonYellow">#FFCF52</color>
+    <color name="colorCircleButtonGreen">#98D018</color>
+    <color name="colorCircleButtonGrey">#888888</color>
 
+    <!-- Colours used for the background of MainActivity -->
     <color name="colorHomeBackgroundRed">#FFDBD1</color>
     <color name="colorHomeBackgroundYellow">#FFF5C2</color>
     <color name="colorHomeBackgroundGreen">#F0FFCD</color>
     <color name="colorHomeBackgroundGrey">#DDDDDD</color>
 
+    <!-- Colours used for the Add Plant button at the bottom of MainActivity and ListActivity -->
     <color name="colorAddButtonRed">#FF7161</color>
     <color name="colorAddButtonYellow">#F2C745</color>
     <color name="colorAddButtonGreen">#7DD018</color>

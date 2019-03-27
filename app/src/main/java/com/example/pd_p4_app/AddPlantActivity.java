@@ -1,6 +1,5 @@
 package com.example.pd_p4_app;
 
-import android.app.Application;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -21,10 +20,13 @@ import java.util.Collections;
 public class AddPlantActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private Button buttonConfirmAdd; // the button to confirm that the user wants to add this plant to the app
 
+    // onCreate is called every time the activity starts
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // load the activity layout
         setContentView(R.layout.activity_add_plant);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
@@ -38,15 +40,17 @@ public class AddPlantActivity extends AppCompatActivity {
         Drawable drawerToggle = myToolbar.getNavigationIcon();
         drawerToggle.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
 
-        Button buttonConfirmAdd = findViewById(R.id.buttonConfirmAdd);
-        final Application myApp = this.getApplication();
-
+        // Add an onClickListener to the confirmation button to react when the user presses the button
+        buttonConfirmAdd = findViewById(R.id.buttonConfirmAdd);
         buttonConfirmAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // Extract the text given by the user
                 String plantName = ((EditText)findViewById(R.id.editTextPlantName)).getText().toString();
                 int plantMinHumidity = Integer.parseInt(((EditText)findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
+                // Add the new plant to the list and resort the list
                 ((MyApplication)getApplication()).addPlant(plantName, plantMinHumidity, 80);
                 Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
+                // Switch to ListActivity
                 Intent intent = new Intent(AddPlantActivity.this, ListActivity.class);
                 finish();
                 startActivity(intent);
