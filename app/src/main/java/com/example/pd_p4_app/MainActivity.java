@@ -57,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
             Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
             dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
             if (dangerPlant.getCurrentHumidity() - dangerPlant.getMinHumidity() < 0) { // RED
-                bigButton.setText("\n" + dangerPlant.getName() + " needs water immediately!\n\n" +
-                        "Humidity level at\n" + dangerPlant.getCurrentHumidity());
+                bigButton.setText(dangerPlant.getName() + "\nneeds water\nimmediately!\n\n" +
+                        "Humidity level at\n" + dangerPlant.getCurrentHumidity() + "%");
                 bigButton.getBackground().setColorFilter(getResources().getColor(R.color.colorBigButtonRed), PorterDuff.Mode.SRC_ATOP);
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonRed), PorterDuff.Mode.SRC_ATOP);
                 drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonRed), PorterDuff.Mode.SRC_ATOP);
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundRed));
             } else if (dangerPlant.getCurrentHumidity() - dangerPlant.getMinHumidity() < 10) { // YELLOW
                 bigButton.setText(dangerPlant.getName() + "\nis getting dry.\n\n" +
-                        "Humidity level at\n" + dangerPlant.getCurrentHumidity());
+                        "Humidity level at\n" + dangerPlant.getCurrentHumidity() + "%");
                 bigButton.getBackground().setColorFilter(getResources().getColor(R.color.colorBigButtonYellow), PorterDuff.Mode.SRC_ATOP);
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonYellow), PorterDuff.Mode.SRC_ATOP);
                 drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonYellow), PorterDuff.Mode.SRC_ATOP);
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundYellow));
             } else { // GREEN
-                bigButton.setText("All plants are watered");
+                bigButton.setText("All plants are watered!");
                 bigButton.getBackground().setColorFilter(getResources().getColor(R.color.colorBigButtonGreen), PorterDuff.Mode.SRC_ATOP);
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonGreen), PorterDuff.Mode.SRC_ATOP);
                 drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonGreen), PorterDuff.Mode.SRC_ATOP);

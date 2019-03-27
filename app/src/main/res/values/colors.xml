@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
     <color name="colorBigButtonRed">#FF4001</color>
     <color name="colorBigButtonYellow">#FFCF52</color>
     <color name="colorBigButtonGreen">#98D018</color>

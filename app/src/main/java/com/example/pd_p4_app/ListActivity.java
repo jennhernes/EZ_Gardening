@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class ListActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         Drawable drawerToggle = myToolbar.getNavigationIcon();
-        drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
+        drawerToggle.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
 
         Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
         final PlantsAdapter adapter = new PlantsAdapter(this, ((MyApplication)this.getApplication()).getPlants());
@@ -74,7 +75,6 @@ public class ListActivity extends AppCompatActivity {
         });
 
         Button buttonAddPlant = findViewById(R.id.buttonAddPlant);
-        buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
         buttonAddPlant.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(ListActivity.this, AddPlantActivity.class);
@@ -126,14 +126,18 @@ class PlantsAdapter extends ArrayAdapter<Plant> {
         minHumidity.setText(Integer.toString(plant.getMinHumidity()));
 
         if (plant.getCurrentHumidity() - plant.getMinHumidity() < getContext().getResources().getInteger(R.integer.intRedDiff)) { // RED
-            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundRed));
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorBigButtonRed));
         } else if (plant.getCurrentHumidity() - plant.getMinHumidity() < getContext().getResources().getInteger(R.integer.intYellowDiff)) { // YELLOW
-            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundYellow));
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorBigButtonYellow));
         }else { // GREEN
-            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorHomeBackgroundGreen));
+            convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorBigButtonGreen));
         }
-            // Return the completed view to render on screen
 
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(0,20, 0, 20);
+
+        convertView.setLayoutParams(lp);
+        // Return the completed view to render on screen
         return convertView;
     }
 }

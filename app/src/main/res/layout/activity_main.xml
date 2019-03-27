@@ -6,6 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/MainTheme"
     android:fitsSystemWindows="true">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
@@ -21,9 +22,7 @@
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:background="@color/colorWhite"/>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -60,8 +59,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_margin="7dp"
                 android:text="@string/buttonAddPlantText"
-                tools:ignore="ButtonStyle" />
+                android:textSize="20sp"
+                android:background="@color/colorAddButtonGreen" />
         </LinearLayout>
     </LinearLayout>
 
