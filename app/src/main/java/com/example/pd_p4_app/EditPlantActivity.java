@@ -17,18 +17,6 @@ public class EditPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_plant);
 
-        Button buttonConfirmAdd = findViewById(R.id.buttonConfirmEdit);
 
-        buttonConfirmAdd.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String plantName = ((EditText)findViewById(R.id.editTextEditPlantName)).getText().toString();
-                int plantMinHumidity = Integer.parseInt(((EditText)findViewById(R.id.editTextEditPlantMinHumidity)).getText().toString());
-                ((MyApplication)getApplication()).addPlant(plantName, plantMinHumidity, 80);
-                Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
-                Intent intent = new Intent(EditPlantActivity.this, ListActivity.class);
-                finish();
-                startActivity(intent);
-            }
-        });
     }
 }

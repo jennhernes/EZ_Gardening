@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Layout for the AddPlantActivity -->
-<!-- From here the user can add a plant to the app -->
+<!-- From here the user can addUser a plant to the app -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/drawer_layout"
@@ -29,6 +29,26 @@
             android:orientation="vertical">
 
             <!--Plant name, field title and edit text area-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/fieldTitleUid"/>
+                <EditText
+                    android:id="@+id/editTextUid"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:inputType="text"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +91,7 @@
                     android:inputType="text"/>
             </LinearLayout>
             
-            <!--Confirm add button, pressing this button adds the plant and closes the activity-->
+            <!--Confirm addUser button, pressing this button adds the plant and closes the activity-->
             <Button
                 android:id="@+id/buttonConfirmAdd"
                 android:layout_width="wrap_content"

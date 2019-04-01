@@ -20,12 +20,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -68,15 +66,15 @@ public class ListActivity extends AppCompatActivity {
         // Display the plants in a list
         // PlantsAdapter is a custom AdapterView that allows me to customize the look
         // of the list however I want
-        Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
-        final PlantsAdapter adapter = new PlantsAdapter(this, ((MyApplication)this.getApplication()).getPlants());
+        List<User> users = MainActivity.db.userDao().getSortedUsers();
+        final PlantsAdapter adapter = new PlantsAdapter(this, users);
         ListView listView = findViewById(R.id.plant_list);
         listView.setAdapter(adapter);
-        listView.setLongClickable(true); // list items can be long pressed
         // Add an onItemLongClickListener to react when the user long presses on a list item
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 // display a Dialog which allows the user to Delete or Edit a plant, or cancel to
                 // return to the list
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
@@ -91,13 +89,15 @@ public class ListActivity extends AppCompatActivity {
                         .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // use the PlantAdapter to remove the item
-                                Plant toRemove = adapter.getItem(position);
+                                User toRemove = adapter.getItem(position);
+                                MainActivity.db.userDao().deleteUser(toRemove);
                                 adapter.remove(toRemove);
+
                             }
                         })
                         .setNeutralButton("Cancel", null)						//Do nothing on no
                         .show();
-                return true;
+
             }
         });
     }
@@ -125,15 +125,15 @@ public class ListActivity extends AppCompatActivity {
 }
 
 // Custom Adapter to display the list of plants
-class PlantsAdapter extends ArrayAdapter<Plant> {
-    public PlantsAdapter(Context context, ArrayList<Plant> plants) {
+class PlantsAdapter extends ArrayAdapter<User> {
+    public PlantsAdapter(Context context, List<User> plants) {
         super(context, 0, plants);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //Get the data item for this position
-        Plant plant = getItem(position);
+        User plant = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
@@ -141,14 +141,14 @@ class PlantsAdapter extends ArrayAdapter<Plant> {
         // Find the views to use for data population
         TextView plantName = convertView.findViewById(R.id.plantName);
         TextView currentHumidity = convertView.findViewById(R.id.currentHumidity);
-        TextView minHumidity = convertView.findViewById(R.id.minHumidity);
+        TextView minHumidity = convertView.findViewById(R.id.plantMinHumidity);
 
         // Set the text values
-        plantName.setText(plant.getName());
-        currentHumidity.setText(Integer.toString(plant.getCurrentHumidity()));
-        minHumidity.setText(Integer.toString(plant.getMinHumidity()));
+        plantName.setText(plant.getPlantName());
+        currentHumidity.setText(plant.getPlantCurrentHumidity());
+        minHumidity.setText(plant.getPlantMinHumidity());
 
-        int humidityDifference = plant.getCurrentHumidity() - plant.getMinHumidity();
+        int humidityDifference = Integer.parseInt(plant.getPlantCurrentHumidity()) - Integer.parseInt(plant.getPlantMinHumidity());
         // Set the background colour based on the difference between current humidity and minimum humidity
         if (humidityDifference < getContext().getResources().getInteger(R.integer.intRedDiff)) { // RED
             convertView.setBackgroundColor(getContext().getResources().getColor(R.color.colorCircleButtonRed));

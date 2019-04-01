@@ -1,5 +1,6 @@
 package com.example.pd_p4_app;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -9,15 +10,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 
 import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static TextView data;
+    public static AppDatabase db;
 
     private View view; // the window
     private Toolbar myToolbar; // custom action bar
@@ -26,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout; // the layout for the nav drawer
     private Button buttonBigCircle; // the large circular button in the middle of the screen
     private Button buttonAddPlant; // the 'Add' button at the bottom of the screen
-    private Plant dangerPlant; // the plant with the smallest difference between current humidity and minimum humidity
+    private User dangerPlant; // the plant with the smallest difference between current humidity and minimum humidity
 
     // onCreate is called every time the activity starts
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "plantdb").allowMainThreadQueries().build();
         // load the activity layout as well as the nav drawer and the toolbar
         setContentView(R.layout.activity_main);
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -69,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         // Modify the look of the activity based on the humidity level of the plants that are
         // being tracked in the app. The colour scheme will be red, yellow, green or grey and
         // the text on the circular plant gives the user critical information
-        if (((MyApplication)getApplication()).plants.size() == 0) { // GREY, no plants in app
+        if (db.userDao().countUsers() == 0) { // GREY, no plants in app
             buttonBigCircle.setText(R.string.noPlantsAdded);
             buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonGrey), PorterDuff.Mode.SRC_ATOP);
 
@@ -81,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             // at least one plant, sort them to get the most dehydrated plant at the beginning of the list
-            Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
-            dangerPlant = ((MyApplication)this.getApplication()).getPlantAt(0);
-            int humidityDifference = dangerPlant.getCurrentHumidity() - dangerPlant.getMinHumidity();
+            List<User> users = db.userDao().getSortedUsers();
+            dangerPlant = users.get(0);
+            int humidityDifference = Integer.parseInt(dangerPlant.getPlantCurrentHumidity()) - Integer.parseInt(dangerPlant.getPlantMinHumidity());
 
             // RED, there is a plant below acceptable humidity levels
             if (humidityDifference < getResources().getInteger(R.integer.intRedDiff)) {
-                buttonBigCircle.setText(dangerPlant.getName() + "\nneeds water\nimmediately!\n\n" +
-                        "Humidity level at\n" + dangerPlant.getCurrentHumidity() + "%");
+                buttonBigCircle.setText(dangerPlant.getPlantName() + "\nneeds water\nimmediately!\n\n" +
+                        "Humidity level at\n" + dangerPlant.getPlantCurrentHumidity() + "%");
                 buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonRed), PorterDuff.Mode.SRC_ATOP);
 
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonRed), PorterDuff.Mode.SRC_ATOP);
@@ -99,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
             // YELLOW, worst off plant is close to minimum acceptable humidity level
             } else if (humidityDifference < getResources().getInteger(R.integer.intYellowDiff)) {
-                buttonBigCircle.setText(dangerPlant.getName() + "\nis getting dry.\n\n" +
-                        "Humidity level at\n" + dangerPlant.getCurrentHumidity() + "%");
+                buttonBigCircle.setText(dangerPlant.getPlantName() + "\nis getting dry.\n\n" +
+                        "Humidity level at\n" + dangerPlant.getPlantCurrentHumidity() + "%");
                 buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonYellow), PorterDuff.Mode.SRC_ATOP);
 
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonYellow), PorterDuff.Mode.SRC_ATOP);
@@ -121,6 +129,18 @@ public class MainActivity extends AppCompatActivity {
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundGreen));
             }
         }
+
+        Button click = (Button) findViewById(R.id.buttonFetchData);
+
+        click.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                fetchData process = new fetchData();
+                process.execute();
+            }
+        });
+
+
     }
 
     // Inflate the toggle view menu item so it will show up in the app
@@ -143,4 +163,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

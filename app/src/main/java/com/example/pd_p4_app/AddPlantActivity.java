@@ -14,13 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.Collections;
+import android.widget.Toast;
 
 public class AddPlantActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private Button buttonConfirmAdd; // the button to confirm that the user wants to add this plant to the app
+    private Button buttonConfirmAdd; // the button to confirm that the user wants to addUser this plant to the app
 
     // onCreate is called every time the activity starts
     @Override
@@ -45,11 +44,17 @@ public class AddPlantActivity extends AppCompatActivity {
         buttonConfirmAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Extract the text given by the user
+                int uid = Integer.parseInt(((EditText)findViewById(R.id.editTextUid)).getText().toString());
                 String plantName = ((EditText)findViewById(R.id.editTextPlantName)).getText().toString();
                 int plantMinHumidity = Integer.parseInt(((EditText)findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
-                // Add the new plant to the list and resort the list
-                ((MyApplication)getApplication()).addPlant(plantName, plantMinHumidity, 80);
-                Collections.sort(((MyApplication)getApplication()).plants, Plant.HumdityDiffComparator);
+                // Add the new plant to the database
+                User user = new User();
+                user.setUid(uid);
+                user.setPlantName(plantName);
+                user.setPlantCurrentHumidity("50");
+                user.setPlantMinHumidity(Integer.toString(plantMinHumidity));
+                MainActivity.db.userDao().addUser(user);
+                Toast.makeText(AddPlantActivity.this, "Data added successfully to the database", Toast.LENGTH_SHORT).show();
                 // Switch to ListActivity
                 Intent intent = new Intent(AddPlantActivity.this, ListActivity.class);
                 finish();
