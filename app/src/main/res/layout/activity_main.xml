@@ -42,7 +42,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/btn_background"
                 android:textAllCaps="false"
-                android:textSize="30sp"
+                android:textSize="35sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,32 +57,17 @@
             android:layout_margin="7dp"
             android:text="Fetch"
             android:textSize="20sp"
-            android:background="@color/colorAddButtonGrey" />
+            android:background="@color/colorBlack" />
 
-        <TextView
+        <Button
+            android:id="@+id/buttonAddPlant"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/fetcheddata"
-            />
-
-        <!-- The button is in a linear layout in case of more buttons being added later -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/buttonAddPlant"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="7dp"
-                android:text="@string/buttonAddPlantText"
-                android:textSize="20sp"
-                android:background="@color/colorAddButtonGreen" />
-        </LinearLayout>
+            android:layout_margin="7dp"
+            android:text="@string/buttonAddPlantText"
+            android:textSize="20sp"
+            android:background="@color/colorAddButtonGreen" />
     </LinearLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->

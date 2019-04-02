@@ -68,23 +68,15 @@
             android:dividerHeight="5dp"
             android:divider="@color/colorWhite"/>
 
-        <!-- The button is in a linear layout in case of more buttons being added later -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
             <Button
                 android:id="@id/buttonAddPlant"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_margin="7dp"
                 android:text="@string/buttonAddPlantText"
                 android:textSize="20sp"
                 android:background="@color/colorAddButtonGreen" />
-        </LinearLayout>
     </LinearLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->

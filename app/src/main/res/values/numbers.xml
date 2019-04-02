@@ -3,4 +3,5 @@
     <!-- Numbers used for threshold differences between changing colours in MainActivity and ListActivity -->
     <integer name="intRedDiff">0</integer>
     <integer name="intYellowDiff">10</integer>
+    <integer name="intDisplayNameLength">15</integer>
 </resources>

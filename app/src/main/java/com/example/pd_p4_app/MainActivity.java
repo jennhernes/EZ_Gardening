@@ -103,9 +103,13 @@ public class MainActivity extends AppCompatActivity {
             dangerPlant = users.get(0);
             int humidityDifference = Integer.parseInt(dangerPlant.getPlantCurrentHumidity()) - Integer.parseInt(dangerPlant.getPlantMinHumidity());
 
+            String displayName = dangerPlant.getPlantName();
+            if (displayName.length() > getResources().getInteger(R.integer.intDisplayNameLength)) {
+                displayName = displayName.substring(0, getResources().getInteger(R.integer.intDisplayNameLength)) + "...";
+            }
             // RED, there is a plant below acceptable humidity levels
             if (humidityDifference < getResources().getInteger(R.integer.intRedDiff)) {
-                buttonBigCircle.setText(dangerPlant.getPlantName() + "\nneeds water\nimmediately!\n\n" +
+                buttonBigCircle.setText(displayName + "\nneeds water\nimmediately!\n\n" +
                         "Humidity level at\n" + dangerPlant.getPlantCurrentHumidity() + "%");
                 buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonRed), PorterDuff.Mode.SRC_ATOP);
 
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // YELLOW, worst off plant is close to minimum acceptable humidity level
             } else if (humidityDifference < getResources().getInteger(R.integer.intYellowDiff)) {
-                buttonBigCircle.setText(dangerPlant.getPlantName() + "\nis getting dry.\n\n" +
+                buttonBigCircle.setText(displayName + "\nwill need to be watered soon.\n\n" +
                         "Humidity level at\n" + dangerPlant.getPlantCurrentHumidity() + "%");
                 buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonYellow), PorterDuff.Mode.SRC_ATOP);
 
