@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/MainTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".EditPlantActivity"></activity>
+        <activity android:name=".EditPlantActivity" />
         <activity android:name=".AddPlantActivity" />
         <activity android:name=".ListActivity" />
         <activity

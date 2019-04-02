@@ -22,7 +22,7 @@
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite"/>
+            android:background="@color/colorAddButtonGreen"/>
 
         <!-- Holds the large button in the center of the screen -->
         <android.support.constraint.ConstraintLayout

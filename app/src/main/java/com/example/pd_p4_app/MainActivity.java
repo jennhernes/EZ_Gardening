@@ -14,15 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static TextView data;
     public static AppDatabase db;
 
     private View view; // the window
@@ -73,7 +68,22 @@ public class MainActivity extends AppCompatActivity {
 
         view = this.getWindow().getDecorView();
         drawerToggle = myToolbar.getNavigationIcon();
+        drawerToggle.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
 
+        updateHomeScreen();
+
+        Button buttonFetchData = findViewById(R.id.buttonFetchData);
+
+        buttonFetchData.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                FetchData process = new FetchData();
+                process.execute(MainActivity.this);
+            }
+        });
+    }
+
+    public void updateHomeScreen() {
         // Modify the look of the activity based on the humidity level of the plants that are
         // being tracked in the app. The colour scheme will be red, yellow, green or grey and
         // the text on the circular plant gives the user critical information
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
 
-            drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonGrey), PorterDuff.Mode.SRC_ATOP);
+            myToolbar.setBackgroundColor(getResources().getColor(R.color.colorAddButtonGrey));
 
             view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundGrey));
 
@@ -101,11 +111,11 @@ public class MainActivity extends AppCompatActivity {
 
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonRed), PorterDuff.Mode.SRC_ATOP);
 
-                drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonRed), PorterDuff.Mode.SRC_ATOP);
+                myToolbar.setBackgroundColor(getResources().getColor(R.color.colorAddButtonRed));
 
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundRed));
 
-            // YELLOW, worst off plant is close to minimum acceptable humidity level
+                // YELLOW, worst off plant is close to minimum acceptable humidity level
             } else if (humidityDifference < getResources().getInteger(R.integer.intYellowDiff)) {
                 buttonBigCircle.setText(dangerPlant.getPlantName() + "\nis getting dry.\n\n" +
                         "Humidity level at\n" + dangerPlant.getPlantCurrentHumidity() + "%");
@@ -113,34 +123,22 @@ public class MainActivity extends AppCompatActivity {
 
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonYellow), PorterDuff.Mode.SRC_ATOP);
 
-                drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonYellow), PorterDuff.Mode.SRC_ATOP);
+                myToolbar.setBackgroundColor(getResources().getColor(R.color.colorAddButtonYellow));
 
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundYellow));
 
-            // GREEN, all plants are watered
+                // GREEN, all plants are watered
             } else {
                 buttonBigCircle.setText(R.string.allPlantsWatered);
                 buttonBigCircle.getBackground().setColorFilter(getResources().getColor(R.color.colorCircleButtonGreen), PorterDuff.Mode.SRC_ATOP);
 
                 buttonAddPlant.getBackground().setColorFilter(getResources().getColor(R.color.colorAddButtonGreen), PorterDuff.Mode.SRC_ATOP);
 
-                drawerToggle.setColorFilter(getResources().getColor(R.color.colorAddButtonGreen), PorterDuff.Mode.SRC_ATOP);
+                myToolbar.setBackgroundColor(getResources().getColor(R.color.colorAddButtonGreen));
 
                 view.setBackgroundColor(getResources().getColor(R.color.colorHomeBackgroundGreen));
             }
         }
-
-        Button click = (Button) findViewById(R.id.buttonFetchData);
-
-        click.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                fetchData process = new fetchData();
-                process.execute();
-            }
-        });
-
-
     }
 
     // Inflate the toggle view menu item so it will show up in the app

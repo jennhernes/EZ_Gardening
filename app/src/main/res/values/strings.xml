@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="buttonAddPlantText">Add Plant</string>
+    <string name="buttonEditPlantText">Edit Plant</string>
     <string name="noPlantsAdded">\nThere are no plants logged in the app. Add a plant using the button below.</string>
     <string name="allPlantsWatered">All plants are watered</string>
     <string name="fieldTitleUid">Plant ID</string>

@@ -32,6 +32,7 @@ public class ListActivity extends AppCompatActivity {
     private Drawable drawerToggle; // the nav drawer icon
     private DrawerLayout mDrawerLayout; // the layout for the nav drawer
     private Button buttonAddPlant; // the 'Add' button at the bottom of the screen
+    public static PlantsAdapter adapter; // the custom adapter object
 
     // onCreate is called every time the activity starts
     @Override
@@ -67,7 +68,7 @@ public class ListActivity extends AppCompatActivity {
         // PlantsAdapter is a custom AdapterView that allows me to customize the look
         // of the list however I want
         List<User> users = MainActivity.db.userDao().getSortedUsers();
-        final PlantsAdapter adapter = new PlantsAdapter(this, users);
+        adapter = new PlantsAdapter(this, users);
         ListView listView = findViewById(R.id.plant_list);
         listView.setAdapter(adapter);
         // Add an onItemLongClickListener to react when the user long presses on a list item
@@ -77,25 +78,25 @@ public class ListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 // display a Dialog which allows the user to Delete or Edit a plant, or cancel to
                 // return to the list
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
-                builder.setTitle("Modify plant")
-                        .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this, R.style.DialogTheme);
+                builder.setTitle("Modify plant");
+                builder.setPositiveButton("Cancel", null)
+                        .setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(ListActivity.this, EditPlantActivity.class);
-                                intent.putExtra("pos", position);
-                                // TODO: start EditPlantActivity here
+                                User toEdit = adapter.getItem(position);
+                                intent.putExtra("uid", toEdit.getUid());
+                                startActivity(intent);
                             }
                         })
-                        .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("Delete", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // use the PlantAdapter to remove the item
                                 User toRemove = adapter.getItem(position);
                                 MainActivity.db.userDao().deleteUser(toRemove);
                                 adapter.remove(toRemove);
-
                             }
                         })
-                        .setNeutralButton("Cancel", null)						//Do nothing on no
                         .show();
 
             }

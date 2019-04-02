@@ -11,14 +11,26 @@
         <item name="android:fontFamily">@font/helveticaneue</item>
     </style>
 
-    <style name="MainTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="DialogTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorWhite</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorBlack</item>
         <item name="actionMenuTextColor">@color/colorBlack</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="titleTextColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="MainTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAddButtonGreen</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="titleTextColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/helveticaneue</item>
     </style>
 
