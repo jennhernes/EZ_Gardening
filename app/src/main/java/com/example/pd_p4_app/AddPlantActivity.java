@@ -40,7 +40,7 @@ public class AddPlantActivity extends AppCompatActivity {
         Drawable drawerToggle = myToolbar.getNavigationIcon();
         drawerToggle.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
 
-        final Toast toastId = Toast.makeText(AddPlantActivity.this, "Plant ID must be an integer.", Toast.LENGTH_SHORT);
+        final Toast toastId = Toast.makeText(AddPlantActivity.this, "Plant ID must be a number (without decimals).", Toast.LENGTH_SHORT);
         toastId.setGravity(Gravity.CENTER,0,0);
 
         final Toast toastName = Toast.makeText(AddPlantActivity.this, "Plants must have a name.", Toast.LENGTH_SHORT);
@@ -63,57 +63,65 @@ public class AddPlantActivity extends AppCompatActivity {
                     toastId.show();
                     return;
                 }
-
-                String plantName = ((EditText)findViewById(R.id.editTextPlantName)).getText().toString();
-
-                if (plantName.equals("")) {
-                    toastName.show();
+                if (MainActivity.db.userDao().getUserById(uid) != null) {
+                    Toast toastDuplicateId = Toast.makeText(AddPlantActivity.this,
+                            "There is already a plant with this ID.", Toast.LENGTH_SHORT);
+                    toastDuplicateId.setGravity(Gravity.CENTER, 0, 0);
+                    toastDuplicateId.show();
                     return;
-                }
-
-                String plantMinHumidityString = ((EditText)findViewById(R.id.editTextPlantMinHumidity)).getText().toString();
-
-                // new minimum humidity set
-                if (!plantMinHumidityString.equals("")) {
-                    // Check if a number is given.
-                    // If something other than a number was entered, send the user a message that
-                    // the humidity must be a number between 0 and 100 and do not update the app.
-                    try {
-                        plantMinHumidity = Integer.parseInt(((EditText)findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
-                    } catch (Exception e) {
-                        toastHumidity.show();
-                        return;
-                    }
-
-                    // Check if the humidity is between 0 and 100.
-                    // If the humidity is not a valid number, send the user a message that the humidity
-                    // must be a number between 0 and 100 and do not update the app.
-                    if (plantMinHumidity > 100 || plantMinHumidity < 0) {
-                        toastHumidity.show();
-                        return;
-                    }
                 } else {
-                    toastHumidity.show();
-                    return;
+
+                    String plantName = ((EditText) findViewById(R.id.editTextPlantName)).getText().toString();
+
+                    if (plantName.equals("")) {
+                        toastName.show();
+                        return;
+                    }
+
+                    String plantMinHumidityString = ((EditText) findViewById(R.id.editTextPlantMinHumidity)).getText().toString();
+
+                    // new minimum humidity set
+                    if (!plantMinHumidityString.equals("")) {
+                        // Check if a number is given.
+                        // If something other than a number was entered, send the user a message that
+                        // the humidity must be a number between 0 and 100 and do not update the app.
+                        try {
+                            plantMinHumidity = Integer.parseInt(((EditText) findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
+                        } catch (Exception e) {
+                            toastHumidity.show();
+                            return;
+                        }
+
+                        // Check if the humidity is between 0 and 100.
+                        // If the humidity is not a valid number, send the user a message that the humidity
+                        // must be a number between 0 and 100 and do not update the app.
+                        if (plantMinHumidity > 100 || plantMinHumidity < 0) {
+                            toastHumidity.show();
+                            return;
+                        }
+                    } else {
+                        toastHumidity.show();
+                        return;
+                    }
+
+                    // Add the new plant to the database
+                    User user = new User();
+                    user.setUid(uid);
+                    user.setPlantName(plantName);
+                    user.setPlantCurrentHumidity(40);
+                    user.setPlantMinHumidity(plantMinHumidity);
+                    MainActivity.db.userDao().addUser(user);
+
+                    Toast toastEditSuccess = Toast.makeText(AddPlantActivity.this,
+                            "Plant added successfully.", Toast.LENGTH_SHORT);
+                    toastEditSuccess.setGravity(Gravity.CENTER, 0, 0);
+                    toastEditSuccess.show();
+
+                    // Switch to ListActivity
+                    Intent intent = new Intent(AddPlantActivity.this, ListActivity.class);
+                    finish();
+                    startActivity(intent);
                 }
-
-                // Add the new plant to the database
-                User user = new User();
-                user.setUid(uid);
-                user.setPlantName(plantName);
-                user.setPlantCurrentHumidity("40");
-                user.setPlantMinHumidity(Integer.toString(plantMinHumidity));
-                MainActivity.db.userDao().addUser(user);
-
-                Toast toastEditSuccess = Toast.makeText(AddPlantActivity.this,
-                        "Data added successfully to the database", Toast.LENGTH_SHORT);
-                toastEditSuccess.setGravity(Gravity.CENTER,0,0);
-                toastEditSuccess.show();
-
-                // Switch to ListActivity
-                Intent intent = new Intent(AddPlantActivity.this, ListActivity.class);
-                finish();
-                startActivity(intent);
             }
         });
     }

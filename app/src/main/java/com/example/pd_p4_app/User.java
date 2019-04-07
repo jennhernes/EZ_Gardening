@@ -14,10 +14,10 @@ public class User {
     private String plantName;
 
     @ColumnInfo(name = "plant_currenthumidity")
-    private String plantCurrentHumidity;
+    private int plantCurrentHumidity;
 
     @ColumnInfo(name = "plant_minhumidity")
-    private String plantMinHumidity;
+    private int plantMinHumidity;
 
     public int getUid(){
         return uid;
@@ -34,19 +34,19 @@ public class User {
         this.plantName = plantName;
     }
 
-    public String getPlantCurrentHumidity() {
+    public int getPlantCurrentHumidity() {
         return plantCurrentHumidity;
     }
 
-    public void setPlantCurrentHumidity(String plantCurrentHumidity) {
+    public void setPlantCurrentHumidity(int plantCurrentHumidity) {
         this.plantCurrentHumidity = plantCurrentHumidity;
     }
 
-    public String getPlantMinHumidity() {
+    public int getPlantMinHumidity() {
         return plantMinHumidity;
     }
 
-    public void setPlantMinHumidity(String plantMinHumidity) {
+    public void setPlantMinHumidity(int plantMinHumidity) {
         this.plantMinHumidity = plantMinHumidity;
     }
 }

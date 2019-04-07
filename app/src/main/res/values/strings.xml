@@ -1,15 +1,40 @@
 <resources>
     <string name="app_name">E-Z Gardening</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="navHeaderText"></string>
+
+    <string name="drawerOptionSettings">Settings</string>
+    <string name="drawerOptionHelp">Help</string>
+
     <string name="buttonAddPlantText">Add Plant</string>
     <string name="buttonEditPlantText">Edit Plant</string>
+
     <string name="noPlantsAdded">No plants found.\nAdd a plant using\nthe button below.</string>
     <string name="allPlantsWatered">All of your plants\nare watered.</string>
+
     <string name="fieldTitleUid">Plant ID</string>
     <string name="fieldTitleName">Name</string>
     <string name="fieldTitleCurrentHumidity">Current Humidity</string>
     <string name="fieldTitleMinHumidity">Minimum Humidity</string>
+
+    <string name="modifyPlantTitle">Modify Plant</string>
+    <string name="modifyPlantOptionDelete">Delete</string>
+    <string name="modifyPlantOptionEdit">Edit</string>
+    <string name="modifyPlantOptionCancel">Cancel</string>
+
+    <string name="helpTitleHome">Home\nScreen</string>
+    <string name="helpTitleList">List\nScreen</string>
+    <string name="helpTitlePlantId">Plant\nID</string>
+    <string name="helpTitlePlantName">Plant\nName</string>
+    <string name="helpTitleMinHumidity">Minimum\nHumidity</string>
+
+    <string name="helpExplainHome">This screen shows the plant most in need of watering.</string>
+    <string name="helpExplainList">This screen shows every plant currently being tracked by the app.</string>
+    <string name="helpExplainPlantId">The plant ID is the ID of the sensor monitoring the plant.
+        Enter the ID found on the sensor\'s box to get the humidity levels for your plant.</string>
+    <string name="helpExplainPlantName">You can name your plants anything you want! Name it after
+        the sensor, the plant species, or give it a unique name of its own. It\'s up to you.</string>
+    <string name="helpExplainMinHumidity">The minimum humidity is the humidity level at which you
+        want the app to notify you that it\'s time to water your plant. This value must be between 0
+        and 100, and cannot contain decimals.</string>
 
 </resources>

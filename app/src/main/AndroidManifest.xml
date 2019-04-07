@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pd_p4_app">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/MainTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".HelpActivity"
+            android:label="Help"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings" />
         <activity android:name=".EditPlantActivity" />
         <activity android:name=".AddPlantActivity" />
         <activity android:name=".ListActivity" />

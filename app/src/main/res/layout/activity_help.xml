@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/helpToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAddButtonGreen"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpTitleHome"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpExplainHome"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpTitleList"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpExplainList"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpTitlePlantId"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpExplainPlantId"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpTitlePlantName"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpExplainPlantName"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpTitleMinHumidity"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/helpExplainMinHumidity"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

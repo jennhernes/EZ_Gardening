@@ -8,10 +8,11 @@
     android:layout_height="match_parent"
     android:theme="@style/ListTheme"
     android:fitsSystemWindows="true">
+
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/listLayout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@color/colorWhite"
@@ -64,19 +65,19 @@
             android:id="@+id/plant_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9"
+            android:layout_weight="8"
             android:dividerHeight="5dp"
             android:divider="@color/colorWhite"/>
 
-            <Button
-                android:id="@id/buttonAddPlant"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="7dp"
-                android:text="@string/buttonAddPlantText"
-                android:textSize="20sp"
-                android:background="@color/colorAddButtonGreen" />
+        <Button
+            android:id="@id/buttonAddPlant"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="7dp"
+            android:text="@string/buttonAddPlantText"
+            android:textSize="20sp"
+            android:background="@color/colorAddButtonGreen" />
     </LinearLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
@@ -86,6 +87,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:theme="@style/NavDrawerTextStyle"
         app:menu="@menu/drawer_view"
         app:headerLayout="@layout/nav_header" />
 </android.support.v4.widget.DrawerLayout>

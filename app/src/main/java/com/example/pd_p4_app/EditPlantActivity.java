@@ -81,7 +81,7 @@ public class EditPlantActivity extends AppCompatActivity {
                     // must be a number between 0 and 100 and do not update the app.
                     if (plantMinHumidity < 100 && plantMinHumidity > 0) {
 
-                        user.setPlantMinHumidity(Integer.toString(plantMinHumidity));
+                        user.setPlantMinHumidity(plantMinHumidity);
                     } else {
                         toastHumidity.show();
                         return;
@@ -90,7 +90,7 @@ public class EditPlantActivity extends AppCompatActivity {
 
                 MainActivity.db.userDao().updateUser(user);
                 Toast toastEditSuccess = Toast.makeText(EditPlantActivity.this,
-                        "Data successfully changed in the database", Toast.LENGTH_SHORT);
+                        "Plant edited successfully.", Toast.LENGTH_SHORT);
                 toastEditSuccess.setGravity(Gravity.CENTER,0,0);
                 toastEditSuccess.show();
                 // Switch to ListActivity

@@ -12,8 +12,7 @@
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/container"
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -50,16 +49,6 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-            android:id="@+id/buttonFetchData"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="7dp"
-            android:text="Fetch"
-            android:textSize="20sp"
-            android:background="@color/colorBlack" />
-
-        <Button
             android:id="@+id/buttonAddPlant"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -77,6 +66,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:theme="@style/NavDrawerTextStyle"
         app:menu="@menu/drawer_view"
         app:headerLayout="@layout/nav_header" />
 

@@ -11,6 +11,30 @@
         <item name="android:fontFamily">@font/helveticaneue</item>
     </style>
 
+    <style name="MainTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAddButtonGreen</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
+        <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="titleTextColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+    </style>
+
+    <style name="ListTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAddButtonGreen</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
+        <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="titleTextColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+    </style>
+
     <style name="DialogTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorWhite</item>
@@ -23,26 +47,9 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
-    <style name="MainTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorAddButtonGreen</item>
-        <item name="colorPrimaryDark">@color/colorBlack</item>
-        <item name="colorAccent">@color/colorBlack</item>
-        <item name="actionMenuTextColor">@color/colorWhite</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="titleTextColor">@color/colorWhite</item>
-        <item name="android:fontFamily">@font/helveticaneue</item>
-    </style>
-
-    <style name="ListTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorAddButtonGreen</item>
-        <item name="colorPrimaryDark">@color/colorBlack</item>
-        <item name="colorAccent">@color/colorBlack</item>
-        <item name="actionMenuTextColor">@color/colorWhite</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="titleTextColor">@color/colorWhite</item>
-        <item name="android:fontFamily">@font/helveticaneue</item>
+    <style name="NavDrawerTextStyle" parent="@style/MainTheme">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
 </resources>

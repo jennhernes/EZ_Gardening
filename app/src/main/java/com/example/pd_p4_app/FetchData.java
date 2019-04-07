@@ -26,33 +26,35 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FetchData extends AsyncTask<Activity,Void,Activity> {
+    public static String urlString;
     String data ="";
     @Override
     protected Activity doInBackground(Activity... args) {
         try {
-            URL url = new URL("https://api.myjson.com/bins/i1cii");//insert url here
+            if (urlString == null || urlString.equals("")) {
+                urlString = "https://api.myjson.com/bins/1aivno";
+            }
+            URL url = new URL(urlString);//insert url here
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line = "";
+            line = bufferedReader.readLine();
             while(line != null){
-                line = bufferedReader.readLine();
                 data = data + line;
+                line = bufferedReader.readLine();
             }
 
-            JSONArray JA = new JSONArray(data);
-            for(int i = 0; i < JA.length(); i++){
-                JSONObject JO = (JSONObject) JA.get(i);
+            JSONObject JO = new JSONObject(data);
 
-                User updatedUser = new User();
-                updatedUser.setUid(Integer.parseInt(JO.get("plantId").toString()));
-                User oldUser = MainActivity.db.userDao().getUserById(updatedUser.getUid());
-                if (oldUser != null) {
-                    updatedUser.setPlantName(oldUser.getPlantName());
-                    updatedUser.setPlantCurrentHumidity(JO.get("plantHumidity").toString());
-                    updatedUser.setPlantMinHumidity(oldUser.getPlantMinHumidity());
-                    MainActivity.db.userDao().updateUser(updatedUser);
-                }
+            User updatedUser = new User();
+            updatedUser.setUid(Integer.parseInt(JO.get("plantID").toString()));
+            User oldUser = MainActivity.db.userDao().getUserById(updatedUser.getUid());
+            if (oldUser != null) {
+                updatedUser.setPlantName(oldUser.getPlantName());
+                updatedUser.setPlantCurrentHumidity(Math.round(Float.parseFloat(JO.get("soilMoisture").toString())));
+                updatedUser.setPlantMinHumidity(oldUser.getPlantMinHumidity());
+                MainActivity.db.userDao().updateUser(updatedUser);
             }
 
         } catch (MalformedURLException e) {
