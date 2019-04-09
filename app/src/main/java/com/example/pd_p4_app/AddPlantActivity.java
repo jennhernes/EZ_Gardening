@@ -86,7 +86,7 @@ public class AddPlantActivity extends AppCompatActivity {
                         // If something other than a number was entered, send the user a message that
                         // the humidity must be a number between 0 and 100 and do not update the app.
                         try {
-                            plantMinHumidity = Integer.parseInt(((EditText) findViewById(R.id.editTextPlantMinHumidity)).getText().toString());
+                            plantMinHumidity = Math.round(Float.parseFloat(((EditText) findViewById(R.id.editTextPlantMinHumidity)).getText().toString()));
                         } catch (Exception e) {
                             toastHumidity.show();
                             return;

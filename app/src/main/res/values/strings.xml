@@ -20,6 +20,7 @@
     <string name="modifyPlantOptionDelete">Delete</string>
     <string name="modifyPlantOptionEdit">Edit</string>
     <string name="modifyPlantOptionCancel">Cancel</string>
+    <string name="confirmDeleteTitle">Confirm Deletion</string>
 
     <string name="helpTitleHome">Home\nScreen</string>
     <string name="helpTitleList">List\nScreen</string>

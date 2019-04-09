@@ -158,10 +158,19 @@ public class ListActivity extends AppCompatActivity {
                         })
                         .setNeutralButton(R.string.modifyPlantOptionDelete, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // use the PlantAdapter to remove the item
-                                User toRemove = adapter.getItem(position);
-                                MainActivity.db.userDao().deleteUser(toRemove);
-                                adapter.remove(toRemove);
+                                // Confirm delete before deleting a plant
+                                AlertDialog.Builder confirm = new AlertDialog.Builder(ListActivity.this, R.style.DialogTheme);
+                                confirm.setTitle(R.string.confirmDeleteTitle);
+                                confirm.setPositiveButton(R.string.modifyPlantOptionCancel, null)
+                                        .setNegativeButton(R.string.modifyPlantOptionDelete, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                // use the PlantAdapter to remove the item
+                                                User toRemove = adapter.getItem(position);
+                                                MainActivity.db.userDao().deleteUser(toRemove);
+                                                adapter.remove(toRemove);
+                                            }
+                                        })
+                                        .show();
                             }
                         })
                         .show();
